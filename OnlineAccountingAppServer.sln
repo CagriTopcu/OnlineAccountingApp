@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FAF50AB1-96FE-4B20-A0E2-24D11B3D387B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A4695AB7-5800-4326-8C3F-6A4ECBE08F55}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D91C7C8A-CB2E-4B91-830E-7A2AABB82E5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{84CB29BF-FA50-4BDD-8008-9D339FC38A26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineAccountingAppServer.Application", "src\Core\OnlineAccountingAppServer.Application\OnlineAccountingAppServer.Application.csproj", "{2A250E08-E94C-464A-8FEE-551FBAA97B22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineAccountingAppServer.Domain", "src\Core\OnlineAccountingAppServer.Domain\OnlineAccountingAppServer.Domain.csproj", "{A56655FD-2045-421F-9291-21581CA61162}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineAccountingAppServer.Infrastructure", "src\External\OnlineAccountingAppServer.Infrastructure\OnlineAccountingAppServer.Infrastructure.csproj", "{9573C0A9-B4C9-406F-8FC9-0917D0EEB423}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineAccountingAppServer.Persistence", "src\External\OnlineAccountingAppServer.Persistence\OnlineAccountingAppServer.Persistence.csproj", "{9698192F-84CB-40C5-9564-DF1922A354E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineAccountingAppServer.Presentation", "src\External\OnlineAccountingAppServer.Presentation\OnlineAccountingAppServer.Presentation.csproj", "{05F6767D-0C99-49C1-8A22-29C3A6DA801A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineAccountingAppServer.WebAPI", "src\OnlineAccountingAppServer.WebAPI\OnlineAccountingAppServer.WebAPI.csproj", "{98E06C3A-8525-4011-8648-2CC5AE1A3546}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A250E08-E94C-464A-8FEE-551FBAA97B22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A250E08-E94C-464A-8FEE-551FBAA97B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A250E08-E94C-464A-8FEE-551FBAA97B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A250E08-E94C-464A-8FEE-551FBAA97B22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A56655FD-2045-421F-9291-21581CA61162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A56655FD-2045-421F-9291-21581CA61162}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A56655FD-2045-421F-9291-21581CA61162}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A56655FD-2045-421F-9291-21581CA61162}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9573C0A9-B4C9-406F-8FC9-0917D0EEB423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9573C0A9-B4C9-406F-8FC9-0917D0EEB423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9573C0A9-B4C9-406F-8FC9-0917D0EEB423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9573C0A9-B4C9-406F-8FC9-0917D0EEB423}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9698192F-84CB-40C5-9564-DF1922A354E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9698192F-84CB-40C5-9564-DF1922A354E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9698192F-84CB-40C5-9564-DF1922A354E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9698192F-84CB-40C5-9564-DF1922A354E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05F6767D-0C99-49C1-8A22-29C3A6DA801A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05F6767D-0C99-49C1-8A22-29C3A6DA801A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05F6767D-0C99-49C1-8A22-29C3A6DA801A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05F6767D-0C99-49C1-8A22-29C3A6DA801A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E06C3A-8525-4011-8648-2CC5AE1A3546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E06C3A-8525-4011-8648-2CC5AE1A3546}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E06C3A-8525-4011-8648-2CC5AE1A3546}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E06C3A-8525-4011-8648-2CC5AE1A3546}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D91C7C8A-CB2E-4B91-830E-7A2AABB82E5C} = {FAF50AB1-96FE-4B20-A0E2-24D11B3D387B}
+		{84CB29BF-FA50-4BDD-8008-9D339FC38A26} = {FAF50AB1-96FE-4B20-A0E2-24D11B3D387B}
+		{2A250E08-E94C-464A-8FEE-551FBAA97B22} = {D91C7C8A-CB2E-4B91-830E-7A2AABB82E5C}
+		{A56655FD-2045-421F-9291-21581CA61162} = {D91C7C8A-CB2E-4B91-830E-7A2AABB82E5C}
+		{9573C0A9-B4C9-406F-8FC9-0917D0EEB423} = {84CB29BF-FA50-4BDD-8008-9D339FC38A26}
+		{9698192F-84CB-40C5-9564-DF1922A354E4} = {84CB29BF-FA50-4BDD-8008-9D339FC38A26}
+		{05F6767D-0C99-49C1-8A22-29C3A6DA801A} = {84CB29BF-FA50-4BDD-8008-9D339FC38A26}
+		{98E06C3A-8525-4011-8648-2CC5AE1A3546} = {FAF50AB1-96FE-4B20-A0E2-24D11B3D387B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D440EB66-2FC7-4035-A230-AD7698332129}
+	EndGlobalSection
+EndGlobal
