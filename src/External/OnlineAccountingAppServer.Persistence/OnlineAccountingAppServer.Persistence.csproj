@@ -21,8 +21,4 @@
     <ProjectReference Include="..\..\Core\OnlineAccountingAppServer.Domain\OnlineAccountingAppServer.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\CompanyServices\" />
-  </ItemGroup>
-
 </Project>
