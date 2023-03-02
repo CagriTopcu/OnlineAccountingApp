@@ -3,7 +3,6 @@ using OnlineAccountingAppServer.Domain.Abstractions;
 using OnlineAccountingAppServer.Domain.Repositories;
 using OnlineAccountingAppServer.Persistence.Context;
 using System.Linq.Expressions;
-using System.Xml.XPath;
 
 namespace OnlineAccountingAppServer.Persistence.Repositories
 {

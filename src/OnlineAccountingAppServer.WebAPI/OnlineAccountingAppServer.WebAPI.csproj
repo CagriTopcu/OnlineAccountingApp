@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\External\OnlineAccountingAppServer.Infrastructure\OnlineAccountingAppServer.Infrastructure.csproj" />
     <ProjectReference Include="..\External\OnlineAccountingAppServer.Persistence\OnlineAccountingAppServer.Persistence.csproj" />
     <ProjectReference Include="..\External\OnlineAccountingAppServer.Presentation\OnlineAccountingAppServer.Presentation.csproj" />
   </ItemGroup>
