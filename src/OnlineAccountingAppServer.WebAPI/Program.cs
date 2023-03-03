@@ -31,10 +31,10 @@ using (var scope = app.Services.CreateScope())
     {
         userManager.CreateAsync(new AppUser
         {
-            UserName = "CagriTopcu",
+            UserName = "admin",
             Email = "test@test.com",
             Id = Guid.NewGuid().ToString(),
-            FullName = "Çaðrý Topçu"
+            FullName = "admin"
         }, password: "Password12*").Wait();
     }
 }
