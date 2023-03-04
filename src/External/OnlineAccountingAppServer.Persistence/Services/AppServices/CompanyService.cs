@@ -22,7 +22,7 @@ namespace OnlineAccountingAppServer.Persistence.Services.AppServices
             _mapper = mapper;
         }
 
-        public async Task CreateCompany(CreateCompanyRequest request)
+        public async Task CreateCompany(CreateCompanyCommand request)
         {
             Company company = _mapper.Map<Company>(request);
             company.Id = Guid.NewGuid().ToString();

@@ -12,9 +12,9 @@ namespace OnlineAccountingAppServer.Presentation.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateUCAF(CreateUCAFRequest request)
+        public async Task<IActionResult> CreateUCAF(CreateUCAFCommand request)
         {
-            CreateUCAFResponse response = await _mediator.Send(request);
+            CreateUCAFCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
     }

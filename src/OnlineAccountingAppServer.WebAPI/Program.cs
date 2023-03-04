@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using OnlineAccountingAppServer.Domain.AppEntities.Identity;
 using OnlineAccountingAppServer.WebAPI.Configurations;
+using OnlineAccountingAppServer.WebAPI.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseExceptionMiddleware();
 
 app.UseHttpsRedirection();
 

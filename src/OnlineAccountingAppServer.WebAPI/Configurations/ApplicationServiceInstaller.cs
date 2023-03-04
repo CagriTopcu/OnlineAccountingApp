@@ -1,4 +1,7 @@
-﻿using OnlineAccountingAppServer.Application;
+﻿using FluentValidation;
+using MediatR;
+using OnlineAccountingAppServer.Application;
+using OnlineAccountingAppServer.Application.Behavior;
 
 namespace OnlineAccountingAppServer.WebAPI.Configurations
 {
@@ -10,6 +13,10 @@ namespace OnlineAccountingAppServer.WebAPI.Configurations
             {
                 cfg.RegisterServicesFromAssemblies(typeof(AssemblyReference).Assembly);
             });
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+            services.AddValidatorsFromAssembly(typeof(AssemblyReference).Assembly);
         }
     }
 }

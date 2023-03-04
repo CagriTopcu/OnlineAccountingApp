@@ -1,19 +1,19 @@
-﻿using MediatR;
+﻿using OnlineAccountingAppServer.Application.Messaging;
 using OnlineAccountingAppServer.Application.Services.AppServices;
 using OnlineAccountingAppServer.Domain.AppEntities;
 
 namespace OnlineAccountingAppServer.Application.Features.AppFeatures.CompanyFeatures.Commands.CreateCompany
 {
-    public sealed class CreateCompanyHandler : IRequestHandler<CreateCompanyRequest, CreateCompanyResponse>
+    public sealed class CreateCompanyCommandHandler : ICommandHandler<CreateCompanyCommand, CreateCompanyCommandResponse>
     {
         private readonly ICompanyService _companyService;
 
-        public CreateCompanyHandler(ICompanyService companyService)
+        public CreateCompanyCommandHandler(ICompanyService companyService)
         {
             _companyService = companyService;
         }
 
-        public async Task<CreateCompanyResponse> Handle(CreateCompanyRequest request, CancellationToken cancellationToken)
+        public async Task<CreateCompanyCommandResponse> Handle(CreateCompanyCommand request, CancellationToken cancellationToken)
         {
             Company company = await _companyService.GetCompanyByName(request.Name);
 

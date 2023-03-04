@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 using OnlineAccountingAppServer.Presentation;
+using OnlineAccountingAppServer.WebAPI.Middlewares;
 
 namespace OnlineAccountingAppServer.WebAPI.Configurations
 {
@@ -8,6 +9,8 @@ namespace OnlineAccountingAppServer.WebAPI.Configurations
     {
         public void Install(IServiceCollection services, IConfiguration configuration)
         {
+            services.AddScoped<ExceptionMiddleware>();
+
             services.AddControllers()
     .AddApplicationPart(typeof(AssemblyReference).Assembly);
 

@@ -1,19 +1,19 @@
-﻿using MediatR;
+﻿using OnlineAccountingAppServer.Application.Messaging;
 using OnlineAccountingAppServer.Application.Services.AppServices;
 using OnlineAccountingAppServer.Domain.AppEntities.Identity;
 
 namespace OnlineAccountingAppServer.Application.Features.AppFeatures.RoleFeatures.Commands.CreateRole
 {
-    public sealed class CreateRoleHandler : IRequestHandler<CreateRoleRequest, CreateRoleResponse>
+    public sealed class CreateRoleCommandHandler : ICommandHandler<CreateRoleCommand, CreateRoleCommandResponse>
     {
         private readonly IRoleService _roleService;
 
-        public CreateRoleHandler(IRoleService roleService)
+        public CreateRoleCommandHandler(IRoleService roleService)
         {
             _roleService = roleService;
         }
 
-        public async Task<CreateRoleResponse> Handle(CreateRoleRequest request, CancellationToken cancellationToken)
+        public async Task<CreateRoleCommandResponse> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
         {
             AppRole role = await _roleService.GetByCodeAsync(request.Code);
 

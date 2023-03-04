@@ -1,19 +1,19 @@
-﻿using MediatR;
+﻿using OnlineAccountingAppServer.Application.Messaging;
 using OnlineAccountingAppServer.Application.Services.AppServices;
 using OnlineAccountingAppServer.Domain.AppEntities.Identity;
 
 namespace OnlineAccountingAppServer.Application.Features.AppFeatures.RoleFeatures.Commands.UpdateRole
 {
-    public sealed class UpdateRoleHandler : IRequestHandler<UpdateRoleRequest, UpdateRoleResponse>
+    public sealed class UpdateRoleCommandHandler : ICommandHandler<UpdateRoleCommand, UpdateRoleCommandResponse>
     {
         private readonly IRoleService _roleService;
 
-        public UpdateRoleHandler(IRoleService roleService)
+        public UpdateRoleCommandHandler(IRoleService roleService)
         {
             _roleService = roleService;
         }
 
-        public async Task<UpdateRoleResponse> Handle(UpdateRoleRequest request, CancellationToken cancellationToken)
+        public async Task<UpdateRoleCommandResponse> Handle(UpdateRoleCommand request, CancellationToken cancellationToken)
         {
             AppRole role = await _roleService.GetByIdAsync(request.Id);
             if (role == null) throw new Exception("Rol bulunamadı!");

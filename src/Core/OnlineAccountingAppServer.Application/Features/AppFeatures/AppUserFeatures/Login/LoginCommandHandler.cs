@@ -1,23 +1,23 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using OnlineAccountingAppServer.Application.Abstractions;
+using OnlineAccountingAppServer.Application.Messaging;
 using OnlineAccountingAppServer.Domain.AppEntities.Identity;
 
 namespace OnlineAccountingAppServer.Application.Features.AppFeatures.AppUserFeatures.Login
 {
-    public class LoginHandler : IRequestHandler<LoginRequest, LoginResponse>
+    public class LoginCommandHandler : ICommandHandler<LoginCommand, LoginCommandResponse>
     {
         private readonly IJwtProvider _jwtProvider;
         private readonly UserManager<AppUser> _userManager;
 
-        public LoginHandler(IJwtProvider jwtProvider, UserManager<AppUser> userManager)
+        public LoginCommandHandler(IJwtProvider jwtProvider, UserManager<AppUser> userManager)
         {
             _jwtProvider = jwtProvider;
             _userManager = userManager;
         }
 
-        public async Task<LoginResponse> Handle(LoginRequest request, CancellationToken cancellationToken)
+        public async Task<LoginCommandResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             AppUser user = await _userManager.Users.Where(p => p.Email == request.EmailOrUserName || p.UserName == request.EmailOrUserName).FirstOrDefaultAsync();
 
@@ -29,13 +29,11 @@ namespace OnlineAccountingAppServer.Application.Features.AppFeatures.AppUserFeat
 
             List<string> roles = new();
 
-            LoginResponse response = new()
-            {
-                Email = user.Email,
-                FullName = user.FullName,
-                UserId = user.Id,
-                Token = await _jwtProvider.CreateTokenAsync(user, roles)
-            };
+            LoginCommandResponse response = new(
+                Token: await _jwtProvider.CreateTokenAsync(user, roles),
+                Email: user.Email,
+                UserId: user.Id,
+                FullName: user.FullName);
 
             return response;
         }
