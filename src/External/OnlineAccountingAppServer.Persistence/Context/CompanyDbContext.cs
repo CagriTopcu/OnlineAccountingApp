@@ -13,7 +13,7 @@ namespace OnlineAccountingAppServer.Persistence.Context
         {
             if(company != null)
             {
-                if (company.UserId is "")
+                if (company.ServerUserId is "")
                     ConnectionString = $"" +
                         $"Server={company.ServerName};" +
                         $"Database={company.DatabaseName};" +
@@ -24,8 +24,8 @@ namespace OnlineAccountingAppServer.Persistence.Context
                     ConnectionString = $"" +
                         $"Server={company.ServerName};" +
                         $"Database={company.DatabaseName};" +
-                        $"User Id={company.UserId};" +
-                        $"Password={company.Password};" +
+                        $"User Id={company.ServerUserId};" +
+                        $"Password={company.ServerPassword};" +
                         $"Integrated Security=false;" +
                         $"TrustServerCertificate=true";
             }

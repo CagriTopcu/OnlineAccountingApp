@@ -5,6 +5,6 @@ namespace OnlineAccountingAppServer.Application.Features.CompanyFeatures.UCAFFea
     public sealed record CreateUCAFCommand(
         string Code,
         string Name,
-        char Type,
+        string Type,
         string CompanyId) : ICommand<CreateUCAFCommandResponse>;
 }
