@@ -4,7 +4,7 @@ using OnlineAccountingAppServer.Application.Abstractions;
 using OnlineAccountingAppServer.Application.Messaging;
 using OnlineAccountingAppServer.Domain.AppEntities.Identity;
 
-namespace OnlineAccountingAppServer.Application.Features.AppFeatures.AppUserFeatures.Login
+namespace OnlineAccountingAppServer.Application.Features.AppFeatures.AppUserFeatures.Commands.Login
 {
     public class LoginCommandHandler : ICommandHandler<LoginCommand, LoginCommandResponse>
     {

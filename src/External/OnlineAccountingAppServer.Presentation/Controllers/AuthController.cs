@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OnlineAccountingAppServer.Application.Features.AppFeatures.AppUserFeatures.Login;
+using OnlineAccountingAppServer.Application.Features.AppFeatures.AppUserFeatures.Commands.Login;
 using OnlineAccountingAppServer.Presentation.Abstraction;
 
 namespace OnlineAccountingAppServer.Presentation.Controllers

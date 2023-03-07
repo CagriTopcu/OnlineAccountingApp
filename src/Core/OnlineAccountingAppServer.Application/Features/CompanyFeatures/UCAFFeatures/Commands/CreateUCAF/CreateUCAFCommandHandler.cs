@@ -1,5 +1,6 @@
 ﻿using OnlineAccountingAppServer.Application.Messaging;
 using OnlineAccountingAppServer.Application.Services.CompanyServices;
+using OnlineAccountingAppServer.Domain.CompanyEntities;
 
 namespace OnlineAccountingAppServer.Application.Features.CompanyFeatures.UCAFFeatures.Commands.CreateUCAF
 {
@@ -14,6 +15,10 @@ namespace OnlineAccountingAppServer.Application.Features.CompanyFeatures.UCAFFea
 
         public async Task<CreateUCAFCommandResponse> Handle(CreateUCAFCommand request, CancellationToken cancellationToken)
         {
+            UniformChartOfAccount ucaf = await _ucafService.GetByCodeAsync(request.Code);
+
+            if (ucaf is not null) throw new Exception("Bu hesap planı kodu daha önce tanımlanmış!");
+
             await _ucafService.CreateUcafAsync(request, cancellationToken);
             return new();
         }

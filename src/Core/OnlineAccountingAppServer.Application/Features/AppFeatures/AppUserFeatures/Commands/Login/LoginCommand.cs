@@ -1,6 +1,6 @@
 ﻿using OnlineAccountingAppServer.Application.Messaging;
 
-namespace OnlineAccountingAppServer.Application.Features.AppFeatures.AppUserFeatures.Login
+namespace OnlineAccountingAppServer.Application.Features.AppFeatures.AppUserFeatures.Commands.Login
 {
     public sealed record LoginCommand(
         string EmailOrUserName,

@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace OnlineAccountingAppServer.Application.Features.AppFeatures.AppUserFeatures.Login
+namespace OnlineAccountingAppServer.Application.Features.AppFeatures.AppUserFeatures.Commands.Login
 {
     public sealed class LoginCommandValidator : AbstractValidator<LoginCommand>
     {
