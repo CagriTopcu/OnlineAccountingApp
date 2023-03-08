@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using OnlineAccountingAppServer.Application.Features.AppFeatures.RoleFeatures.Commands.CreateAllRoles;
 using OnlineAccountingAppServer.Application.Features.AppFeatures.RoleFeatures.Commands.CreateRole;
 using OnlineAccountingAppServer.Application.Features.AppFeatures.RoleFeatures.Commands.DeleteRole;
 using OnlineAccountingAppServer.Application.Features.AppFeatures.RoleFeatures.Commands.UpdateRole;
@@ -43,6 +44,15 @@ namespace OnlineAccountingAppServer.Presentation.Controllers
             DeleteRoleCommand request = new(id);
 
             DeleteRoleCommandResponse response = await _mediator.Send(request);
+            return Ok(response);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> CreateAllRoles()
+        {
+            CreateAllRolesCommand request = new();
+            CreateAllRolesCommandResponse response = await _mediator.Send(request);
+            
             return Ok(response);
         }
     }

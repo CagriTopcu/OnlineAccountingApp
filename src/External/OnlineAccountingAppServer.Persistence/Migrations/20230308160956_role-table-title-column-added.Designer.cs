@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineAccountingAppServer.Persistence.Context;
 
@@ -11,9 +12,11 @@ using OnlineAccountingAppServer.Persistence.Context;
 namespace OnlineAccountingAppServer.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230308160956_role-table-title-column-added")]
+    partial class roletabletitlecolumnadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -154,59 +157,6 @@ namespace OnlineAccountingAppServer.Persistence.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("OnlineAccountingAppServer.Domain.AppEntities.MainRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CompanyId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsRoleCreatedByAdmin")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("MainRoles");
-                });
-
-            modelBuilder.Entity("OnlineAccountingAppServer.Domain.AppEntities.MainRoleAndRoleRelationship", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("MainRoleId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MainRoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("MainRoleAndRoleRelationships");
-                });
-
             modelBuilder.Entity("OnlineAccountingAppServer.Domain.AppEntities.UserAndCompanyRelationship", b =>
                 {
                     b.Property<string>("Id")
@@ -231,30 +181,6 @@ namespace OnlineAccountingAppServer.Persistence.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("UserAndCompanyRelationships");
-                });
-
-            modelBuilder.Entity("OnlineAccountingAppServer.Domain.AppEntities.MainRole", b =>
-                {
-                    b.HasOne("OnlineAccountingAppServer.Domain.AppEntities.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId");
-
-                    b.Navigation("Company");
-                });
-
-            modelBuilder.Entity("OnlineAccountingAppServer.Domain.AppEntities.MainRoleAndRoleRelationship", b =>
-                {
-                    b.HasOne("OnlineAccountingAppServer.Domain.AppEntities.MainRole", "MainRole")
-                        .WithMany()
-                        .HasForeignKey("MainRoleId");
-
-                    b.HasOne("OnlineAccountingAppServer.Domain.AppEntities.Identity.AppRole", "AppRole")
-                        .WithMany()
-                        .HasForeignKey("RoleId");
-
-                    b.Navigation("AppRole");
-
-                    b.Navigation("MainRole");
                 });
 
             modelBuilder.Entity("OnlineAccountingAppServer.Domain.AppEntities.UserAndCompanyRelationship", b =>
