@@ -1,24 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineAccountingAppServer.Domain.Abstractions;
-using OnlineAccountingAppServer.Domain.Repositories;
-using OnlineAccountingAppServer.Persistence.Context;
+using OnlineAccountingAppServer.Domain.Repositories.GenericRepositories.CompanyDbContext;
 
-namespace OnlineAccountingAppServer.Persistence.Repositories
+namespace OnlineAccountingAppServer.Persistence.Repositories.GenericRepositories.CompanyDbContext
 {
-    public class CommandRepository<T> : ICommandRepository<T>
+    public class CompanyDbCommandRepository<T> : ICompanyDbCommandRepository<T>
         where T : Entity
     {
-        private static readonly Func<CompanyDbContext, string, Task<T>> GetByIdCompiled =
-            EF.CompileAsyncQuery((CompanyDbContext context, string id) =>
+        private static readonly Func<Context.CompanyDbContext, string, Task<T>> GetByIdCompiled =
+            EF.CompileAsyncQuery((Context.CompanyDbContext context, string id) =>
             context.Set<T>().FirstOrDefault(p => p.Id == id));
 
-        private CompanyDbContext _context;
+        private Context.CompanyDbContext _context;
 
         public DbSet<T> Entity { get; set; }
 
         public void SetDbContextInstance(DbContext context)
         {
-            _context = (CompanyDbContext)context;
+            _context = (Context.CompanyDbContext)context;
             Entity = _context.Set<T>();
         }
 

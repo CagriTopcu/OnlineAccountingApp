@@ -3,7 +3,8 @@ using OnlineAccountingAppServer.Application.Features.CompanyFeatures.UCAFFeature
 using OnlineAccountingAppServer.Application.Services.CompanyServices;
 using OnlineAccountingAppServer.Domain;
 using OnlineAccountingAppServer.Domain.CompanyEntities;
-using OnlineAccountingAppServer.Domain.Repositories.UCAFRepositories;
+using OnlineAccountingAppServer.Domain.Repositories.CompanyDbContext.UCAFRepositories;
+using OnlineAccountingAppServer.Domain.UnitOfWorks;
 using OnlineAccountingAppServer.Persistence.Context;
 
 namespace OnlineAccountingAppServer.Persistence.Services.CompanyServices
@@ -13,11 +14,11 @@ namespace OnlineAccountingAppServer.Persistence.Services.CompanyServices
         private readonly IUCAFCommandRepository _commandRepository;
         private readonly IUCAFQueryRepository _queryRepository;
         private readonly IContextService _contextService;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ICompanyDbUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private CompanyDbContext _context;
 
-        public UCAFService(IUCAFCommandRepository commandRepository, IContextService contextService, IUnitOfWork unitOfWork, IMapper mapper, IUCAFQueryRepository queryRepository)
+        public UCAFService(IUCAFCommandRepository commandRepository, IContextService contextService, ICompanyDbUnitOfWork unitOfWork, IMapper mapper, IUCAFQueryRepository queryRepository)
         {
             _commandRepository = commandRepository;
             _contextService = contextService;

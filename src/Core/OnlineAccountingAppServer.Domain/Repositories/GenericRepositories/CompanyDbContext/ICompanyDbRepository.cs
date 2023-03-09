@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineAccountingAppServer.Domain.Abstractions;
 
-namespace OnlineAccountingAppServer.Domain.Repositories
+namespace OnlineAccountingAppServer.Domain.Repositories.GenericRepositories.CompanyDbContext
 {
-    public interface IRepository<T>
+    public interface ICompanyDbRepository<T> : IRepository<T>
         where T : Entity
     {
         void SetDbContextInstance(DbContext context);
-        DbSet<T> Entity { get; set; }
     }
 }

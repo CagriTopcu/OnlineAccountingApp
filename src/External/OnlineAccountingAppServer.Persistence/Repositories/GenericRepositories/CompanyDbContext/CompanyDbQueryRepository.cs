@@ -1,39 +1,33 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineAccountingAppServer.Domain.Abstractions;
-using OnlineAccountingAppServer.Domain.Repositories;
+using OnlineAccountingAppServer.Domain.Repositories.GenericRepositories.CompanyDbContext;
 using OnlineAccountingAppServer.Persistence.Context;
 using System.Linq.Expressions;
 
-namespace OnlineAccountingAppServer.Persistence.Repositories
+namespace OnlineAccountingAppServer.Persistence.Repositories.GenericRepositories.CompanyDbContext
 {
-    public class QueryRepository<T> : IQueryRepository<T>
+    public class CompanyDbQueryRepository<T> : ICompanyDbQueryRepository<T>
         where T : Entity
     {
-        private static readonly Func<CompanyDbContext, string, bool, Task<T>> GetByIdCompiled =
-           EF.CompileAsyncQuery((CompanyDbContext context, string id, bool isTracking) =>
-           isTracking == true 
-             ? context.Set<T>().FirstOrDefault(p => p.Id == id) 
+        private static readonly Func<Context.CompanyDbContext, string, bool, Task<T>> GetByIdCompiled =
+           EF.CompileAsyncQuery((Context.CompanyDbContext context, string id, bool isTracking) =>
+           isTracking == true
+             ? context.Set<T>().FirstOrDefault(p => p.Id == id)
              : context.Set<T>().AsNoTracking().FirstOrDefault(p => p.Id == id));
 
-        private static readonly Func<CompanyDbContext, bool, Task<T>> GetFirstCompiled =
-           EF.CompileAsyncQuery((CompanyDbContext context, bool isTracking) =>
+        private static readonly Func<Context.CompanyDbContext, bool, Task<T>> GetFirstCompiled =
+           EF.CompileAsyncQuery((Context.CompanyDbContext context, bool isTracking) =>
            isTracking == true
            ? context.Set<T>().FirstOrDefault()
            : context.Set<T>().AsNoTracking().FirstOrDefault());
 
-        private static readonly Func<CompanyDbContext, Expression<Func<T, bool>>, bool, Task<T>> GetFirstByExpressionCompiled =
-           EF.CompileAsyncQuery((CompanyDbContext context, Expression<Func<T, bool>> expression, bool isTracking) =>
-           isTracking == true
-           ? context.Set<T>().FirstOrDefault(expression)
-           : context.Set<T>().AsNoTracking().FirstOrDefault(expression));
-
-        private CompanyDbContext _context;
+        private Context.CompanyDbContext _context;
 
         public DbSet<T> Entity { get; set; }
 
         public void SetDbContextInstance(DbContext context)
         {
-            _context = (CompanyDbContext)context;
+            _context = (Context.CompanyDbContext)context;
             Entity = _context.Set<T>();
         }
 
@@ -58,7 +52,10 @@ namespace OnlineAccountingAppServer.Persistence.Repositories
 
         public async Task<T> GetFirstByExpressionAsync(Expression<Func<T, bool>> expression, bool isTracking = true)
         {
-            return await GetFirstByExpressionCompiled(_context, expression, isTracking);
+            if (!isTracking)
+                return await Entity.FirstOrDefaultAsync(expression);
+
+            return await Entity.AsNoTracking().FirstOrDefaultAsync(expression);
         }
 
         public IQueryable<T> GetWhere(Expression<Func<T, bool>> expression, bool isTracking = true)
