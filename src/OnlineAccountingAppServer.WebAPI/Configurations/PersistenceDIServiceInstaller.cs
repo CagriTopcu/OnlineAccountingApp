@@ -10,6 +10,8 @@ using OnlineAccountingAppServer.Persistence.Repositories.AppDbContext.CompanyRep
 using OnlineAccountingAppServer.Domain.UnitOfWorks;
 using OnlineAccountingAppServer.Domain;
 using OnlineAccountingAppServer.Persistence.UnitOfWorks;
+using OnlineAccountingAppServer.Domain.Repositories.AppDbContext.MainRoleRepositories;
+using OnlineAccountingAppServer.Persistence.Repositories.AppDbContext.MainRoleRepositories;
 
 namespace OnlineAccountingAppServer.WebAPI.Configurations
 {
@@ -31,6 +33,7 @@ namespace OnlineAccountingAppServer.WebAPI.Configurations
                 #region AppDbContext
                 services.AddScoped<ICompanyService, CompanyService>();
                 services.AddScoped<IRoleService, RoleService>();
+                services.AddScoped<IMainRoleService, MainRoleService>();
                 #endregion
             #endregion
 
@@ -43,6 +46,8 @@ namespace OnlineAccountingAppServer.WebAPI.Configurations
                 #region AppDbContext
                 services.AddScoped<ICompanyCommandRepository, CompanyCommandRepository>();
                 services.AddScoped<ICompanyQueryRepository, CompanyQueryRepository>();
+                services.AddScoped<IMainRoleCommandRepository, MainRoleCommandRepository>();
+                services.AddScoped<IMainRoleQueryRepository, MainRoleQueryRepository>();
                 #endregion
             #endregion
         }

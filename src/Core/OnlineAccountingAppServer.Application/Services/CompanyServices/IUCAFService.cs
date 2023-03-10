@@ -6,6 +6,6 @@ namespace OnlineAccountingAppServer.Application.Services.CompanyServices
     public interface IUCAFService
     {
         Task CreateUcafAsync(CreateUCAFCommand request, CancellationToken cancellationToken);
-        Task<UniformChartOfAccount> GetByCodeAsync(string code);
+        Task<UniformChartOfAccount> GetByCodeAsync(string code, CancellationToken cancellationToken);
     }
 }

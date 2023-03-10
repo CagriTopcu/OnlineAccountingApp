@@ -4,7 +4,7 @@ using OnlineAccountingAppServer.Application.Services.AppServices;
 using OnlineAccountingAppServer.Domain.AppEntities;
 using Shouldly;
 
-namespace OnlineAccountingAppServer.UnitTest.Features.AppFeatures.CompanyFeatures.Commands;
+namespace OnlineAccountingAppServer.UnitTest.Features.AppFeatures.CompanyFeatures;
 
 public sealed class CreateCompanyCommandUnitTest
 {
@@ -18,7 +18,7 @@ public sealed class CreateCompanyCommandUnitTest
     [Fact]
     public async Task CompanyShouldBeNull()
     {
-        Company company = (await _companyService.Object.GetCompanyByName("TestCompany"))!;
+        Company company = (await _companyService.Object.GetCompanyByName("TestCompany", default))!;
         company.ShouldBeNull();
     }
 

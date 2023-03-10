@@ -40,9 +40,9 @@ namespace OnlineAccountingAppServer.Persistence.Services.CompanyServices
             await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<UniformChartOfAccount> GetByCodeAsync(string code)
+        public async Task<UniformChartOfAccount> GetByCodeAsync(string code, CancellationToken cancellationToken)
         {
-            return await _queryRepository.GetFirstByExpressionAsync(p => p.Code == code);
+            return await _queryRepository.GetFirstByExpressionAsync(p => p.Code == code, cancellationToken);
         }
     }
 }

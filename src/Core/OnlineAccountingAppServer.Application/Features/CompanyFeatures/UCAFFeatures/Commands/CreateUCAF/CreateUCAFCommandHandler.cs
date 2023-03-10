@@ -15,7 +15,7 @@ namespace OnlineAccountingAppServer.Application.Features.CompanyFeatures.UCAFFea
 
         public async Task<CreateUCAFCommandResponse> Handle(CreateUCAFCommand request, CancellationToken cancellationToken)
         {
-            UniformChartOfAccount ucaf = await _ucafService.GetByCodeAsync(request.Code);
+            UniformChartOfAccount ucaf = await _ucafService.GetByCodeAsync(request.Code, cancellationToken);
 
             if (ucaf is not null) throw new Exception("Bu hesap planı kodu daha önce tanımlanmış!");
 

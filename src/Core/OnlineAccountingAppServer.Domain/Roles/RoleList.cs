@@ -1,4 +1,5 @@
-﻿using OnlineAccountingAppServer.Domain.AppEntities.Identity;
+﻿using OnlineAccountingAppServer.Domain.AppEntities;
+using OnlineAccountingAppServer.Domain.AppEntities.Identity;
 
 namespace OnlineAccountingAppServer.Domain.Roles;
 
@@ -17,6 +18,18 @@ public sealed class RoleList
         };
 
         return appRoles;
+    }
+
+    public static List<MainRole> GetStaticMainRoles()
+    {
+        List<MainRole> mainRoles = new()
+        {
+            new(Guid.NewGuid().ToString(),"Admin", true),
+            new(Guid.NewGuid().ToString(), "Manager",true),
+            new(Guid.NewGuid().ToString(), "User", true)
+        };
+
+        return mainRoles;
     }
 
     #region RoleTitleNames

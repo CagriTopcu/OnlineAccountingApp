@@ -4,7 +4,7 @@ using OnlineAccountingAppServer.Application.Services.AppServices;
 using OnlineAccountingAppServer.Domain.AppEntities.Identity;
 using Shouldly;
 
-namespace OnlineAccountingAppServer.UnitTest.Features.AppFeatures.RoleFeatures.Commands;
+namespace OnlineAccountingAppServer.UnitTest.Features.AppFeatures.RoleFeatures;
 
 public sealed class DeleteRoleCommandUnitTest
 {
